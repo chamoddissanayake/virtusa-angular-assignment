@@ -1,0 +1,162 @@
+<div *ngIf="showBanner">
+  <div class="bannerOuterForPopup">
+    <app-banner [title]="bannerTitle" [subTitle]="bannerSubTitle" [status]="bannerStatus"></app-banner>
+  </div>
+</div>
+
+<div mat-dialog-content>
+
+  <!--  <h1 mat-dialog-title>{{this.data.sentence_str}}</h1>-->
+  <h1>Update Contact</h1>
+  <hr/>
+  <div class="txt-container">
+    <h2>Please update your details</h2>
+  </div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <!--    -->
+    <div class="q-item-container">
+      <div>
+        <label class="bold-lbl">Title </label>
+      </div>
+      <div>
+        <select
+          class="form-item-drop"
+          (change)="changeTitle($event)"
+          formControlName="title"
+        >
+          <option *ngFor="let title of titles" [ngValue]="title">
+            {{ title }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+
+    <!--    First Name Section-->
+    <div class="q-item-container">
+      <div>
+        <label class="bold-lbl" for="firstName">First Name</label>
+      </div>
+      <div>
+        <input class="form-item" id="firstName" type="text" formControlName="firstName">
+      </div>
+      <div class="text-danger"
+           *ngIf="profileForm.get('firstName').touched &&
+                      profileForm.get('firstName').errors &&
+                      profileForm.get('firstName').hasError('required')">
+        <app-error [errorMsg]="'Please fill First Name'"></app-error>
+      </div>
+    </div>
+
+
+    <!--    Last Name Section-->
+    <div class="q-item-container">
+      <div>
+        <label class="bold-lbl" for="lastName">Last Name </label>
+      </div>
+      <div>
+        <input class="form-item" id="lastName" type="text" formControlName="lastName">
+      </div>
+
+      <div class="text-danger"
+           *ngIf="profileForm.get('lastName').touched &&
+                      profileForm.get('lastName').errors &&
+                      profileForm.get('lastName').hasError('required')">
+        <app-error [errorMsg]="'Please fill Last Name'"></app-error>
+      </div>
+    </div>
+
+
+    <!--    Mobile Number Section-->
+    <div class="q-item-container">
+      <div>
+        <label class="bold-lbl" for="mobile">Mobile Number: </label>
+      </div>
+      <div>
+        <input class="form-item" id="mobile" type="text" formControlName="mobile">
+      </div>
+      <div class="text-danger"
+           *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('required')">
+        <app-error [errorMsg]="'Please fill your Mobile Number'"></app-error>
+      </div>
+      <div class="text-danger"
+           *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('minlength')">
+        <app-error [errorMsg]="'Mobile Number must be 10 digits'"></app-error>
+      </div>
+      <div class="text-danger"
+           *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('maxlength')">
+        <app-error [errorMsg]="'Mobile Number must be 10 digits'"></app-error>
+      </div>
+
+      <div class="text-danger"
+           *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('pattern')">
+        <app-error [errorMsg]="'Mobile Number is not a valid number'"></app-error>
+      </div>
+    </div>
+
+    <!--    Alternative Email Section (optional)-->
+    <div class="q-item-container">
+      <div>
+        <label class="bold-lbl" for="altEmail">Alternative Email: (optional) </label>
+      </div>
+      <div>
+        <input class="form-item" id="altEmail" type="text" formControlName="altEmail">
+      </div>
+      <div class="text-danger"
+           *ngIf="profileForm.get('altEmail').touched &&
+                      profileForm.get('altEmail').errors &&
+                      profileForm.get('altEmail').hasError('email')">
+        <app-error [errorMsg]="'Not a valid Email'"></app-error>
+      </div>
+    </div>
+
+
+    <!--    <p>Form Status: {{ profileForm.status }}</p>-->
+    <hr class="hr60"/>
+
+    <div class="txt-container">
+      <h2>Marketing Preferences</h2>
+      <p>Would you like to kept up to date with our offers and services.</p>
+    </div>
+
+    <div class="hori-container q-item-container">
+      <div class="hori-item custom-control custom-radio">
+        <input id="yes" type="radio" class="custom-control-input" value="yes" name="marketingPref"
+               formControlName="marketingPref">
+        <label class="custom-control-label" for="yes"> Yes </label>
+      </div>
+
+      <div class="hori-item custom-control custom-radio">
+        <input id="no" type="radio" class="custom-control-input" value="no" name="marketingPref"
+               formControlName="marketingPref">
+        <label class="custom-control-label" for="no"> No </label>
+      </div>
+    </div>
+
+
+    <hr class="hr60"/>
+
+    <div class="hori-container q-item-container">
+      <div class="hori-item">
+        <button type="button" (click)="closeBtnClick()" class="pri-color-outline">Back</button>
+      </div>
+
+      <div class="hori-item">
+<!--        <button type="submit" class="pri-color" [disabled]="!profileForm.valid">Submit</button>-->
+        <button type="submit" class="pri-color">Submit</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>

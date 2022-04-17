@@ -1,0 +1,83 @@
+.form-item{
+  width: 59%;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  outline:none;
+  padding: 6px;
+}
+.form-item:focus{
+  border:1px solid #56b4ef;
+  box-shadow: 0px 0px 3px 1px #c8def0;
+}
+
+.form-item-drop{
+  width: 60%;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  outline:none;
+  padding: 6px;
+}
+.form-item-drop:focus{
+  border:1px solid #56b4ef;
+  box-shadow: 0px 0px 3px 1px #c8def0;
+}
+
+.hr60{
+  width: 60%;
+  margin-left: 0px;
+}
+
+
+.hori-container{
+  display: flex;
+}
+
+.hori-item{
+  width: 90px;
+}
+
+.pri-color{
+  background-color: green;
+  color: white;
+}
+
+.pri-color-outline{
+  border-color: green;
+  background-color: white;
+}
+
+.bold-lbl{
+  font-weight: 500;
+}
+
+.q-item-container{
+  margin-bottom: 15px;
+}
+
+.pri-color{
+  background-color: green;
+  color: white;
+  border-radius: 6px;
+  height: 35px;
+  width: 80px;
+}
+
+.pri-color-outline{
+  border-color: green;
+  color: green;
+  background-color: white;
+  border-radius: 6px;
+  height: 35px;
+  width: 80px;
+}
+.txt-container{
+  width: 60%;
+}
+
+
+.bannerOuterForPopup{
+  margin-left: -38%;
+  margin-top: -30px;
+}

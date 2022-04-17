@@ -1,0 +1,261 @@
+<div *ngIf="showBanner">
+  <app-banner [title]="bannerTitle" [subTitle]="bannerSubTitle" [status]="bannerStatus"></app-banner>
+</div>
+
+<div class="section-container">
+  <div class="contacts-add-container">
+    <app-title [title]="title" [subTitle]="subTitle"></app-title>
+
+    <div class="form-container">
+      <div class="txt-container">
+        <h1>Please enter your details</h1>
+      </div>
+
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+        <!--    -->
+        <div class="q-item-container">
+          <div>
+            <label class="bold-lbl">Title </label>
+          </div>
+          <select
+            class="form-item-drop custom-select"
+            (change)="changeTitle($event)"
+            formControlName="title"
+          >
+            <option *ngFor="let title of titles" [ngValue]="title">
+              {{ title }}
+            </option>
+          </select>
+        </div>
+
+        <!--    First Name Section-->
+        <div class="q-item-container">
+          <div>
+            <label class="bold-lbl" for="firstName">First Name</label>
+          </div>
+          <div>
+            <input class="form-item" id="firstName" type="text" formControlName="firstName">
+          </div>
+          <div class="text-danger"
+               *ngIf="profileForm.get('firstName').touched &&
+                      profileForm.get('firstName').errors &&
+                      profileForm.get('firstName').hasError('required')">
+            <app-error [errorMsg]="'Please fill First Name'"></app-error>
+          </div>
+        </div>
+
+
+        <!--    Last Name Section-->
+        <div class="q-item-container">
+          <div>
+            <label class="bold-lbl" for="lastName">Last Name </label>
+          </div>
+          <div>
+            <input class="form-item" id="lastName" type="text" formControlName="lastName">
+          </div>
+
+          <div class="text-danger"
+               *ngIf="profileForm.get('lastName').touched &&
+                      profileForm.get('lastName').errors &&
+                      profileForm.get('lastName').hasError('required')">
+            <app-error [errorMsg]="'Please fill Last Name'"></app-error>
+          </div>
+
+
+        </div>
+
+        <!--    Mobile Number Section-->
+        <div class="q-item-container">
+          <div>
+            <label class="bold-lbl" for="mobile">Mobile Number </label>
+          </div>
+          <div>
+            <input class="form-item" id="mobile" type="text" formControlName="mobile">
+          </div>
+          <div class="text-danger"
+               *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('required')">
+            <app-error [errorMsg]="'Please fill your Mobile Number'"></app-error>
+          </div>
+          <div class="text-danger"
+               *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('minlength')">
+            <app-error [errorMsg]="'Mobile Number must be 10 digits'"></app-error>
+          </div>
+          <div class="text-danger"
+               *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('maxlength')">
+            <app-error [errorMsg]="'Mobile Number must be 10 digits'"></app-error>
+          </div>
+
+          <div class="text-danger"
+               *ngIf="profileForm.get('mobile').touched &&
+                      profileForm.get('mobile').errors &&
+                      profileForm.get('mobile').hasError('pattern')">
+            <app-error [errorMsg]="'Mobile Number is not a valid number'"></app-error>
+          </div>
+        </div>
+
+        <!--    Alternative Email Section (optional)-->
+        <div class="q-item-container">
+          <div>
+            <label class="bold-lbl" for="altEmail">Alternative Email (optional) </label>
+          </div>
+          <div>
+            <input class="form-item" id="altEmail" type="text" formControlName="altEmail">
+          </div>
+          <div class="text-danger"
+               *ngIf="profileForm.get('altEmail').touched &&
+                      profileForm.get('altEmail').errors &&
+                      profileForm.get('altEmail').hasError('email')">
+            <app-error [errorMsg]="'Not a valid Email'"></app-error>
+          </div>
+        </div>
+
+        <div>
+          <div class="txt-container">
+            <h1>Please set your login details</h1>
+          </div>
+
+
+          <!--    Username Section-->
+          <div class="q-item-container">
+            <div>
+              <label class="bold-lbl" for="username">Username/email: </label>
+            </div>
+            <div>
+              <input class="form-item" id="username" type="text" formControlName="username"/>
+            </div>
+            <div class="text-danger"
+                 *ngIf="profileForm.get('username').touched  &&
+                 profileForm.get('username').errors &&
+                 profileForm.get('username').hasError('email')">
+              <app-error [errorMsg]="'Username is not in correct pattern'"></app-error>
+            </div>
+            <div class="text-danger"
+                 *ngIf="profileForm.get('username').touched  &&
+                 profileForm.get('username').errors &&
+                 profileForm.get('username').hasError('required')">
+              <app-error [errorMsg]="'Username is required'"></app-error>
+            </div>
+            <div class="txt-container">
+              <div class="sm-lbl">
+                This is the email we contact you with. We can't change it later.
+              </div>
+              <div class="sm-lbl">
+                So please choose correctly
+              </div>
+            </div>
+
+          </div>
+
+          <!--    Password Section-->
+          <div class="q-item-container">
+            <div>
+              <label class="bold-lbl" for="password">Password: </label>
+            </div>
+            <div>
+              <input class="form-item" id="password" type="password" formControlName="password">
+            </div>
+
+            <div class="text-danger"
+                 *ngIf="profileForm.get('password').touched  &&
+                 profileForm.get('password').errors &&
+                 profileForm.get('password').hasError('required')">
+              <app-error [errorMsg]="'Please fill your Password'"></app-error>
+            </div>
+
+            <div class="text-danger"
+                 *ngIf="profileForm.get('password').touched &&
+                      profileForm.get('password').errors &&
+                      profileForm.get('password').hasError('minlength')">
+              <app-error [errorMsg]="'password Number more than 8 digits'"></app-error>
+            </div>
+
+            <div class="text-danger"
+                 *ngIf="profileForm.get('password').touched &&
+                      profileForm.get('password').errors &&
+                      profileForm.get('password').hasError('pattern')">
+              <app-error [errorMsg]="'password must contain at capital, number and special characters'"></app-error>
+            </div>
+
+          </div>
+
+          <!--    Re-Password Section-->
+          <div class="q-item-container">
+            <div>
+              <label class="bold-lbl" for="rePassword">Re Password: </label>
+            </div>
+            <div>
+              <input class="form-item" id="rePassword" type="password" formControlName="rePassword">
+            </div>
+            <div class="text-danger"
+                 *ngIf="profileForm.get('rePassword').touched &&
+                      profileForm.get('rePassword').errors &&
+                       profileForm.get('rePassword').hasError('required') ">
+              <app-error [errorMsg]="'Please enter password again'"></app-error>
+            </div>
+
+            <div class="text-danger"
+                 *ngIf="profileForm.get('rePassword').touched &&
+                      profileForm.get('rePassword').errors &&
+                       profileForm.get('rePassword').hasError('mustMatch') ">
+              <app-error [errorMsg]="'Passwords are not equal'"></app-error>
+            </div>
+
+          </div>
+
+        </div>
+        <!--            <p>Form Status: {{ profileForm.status }}</p>-->
+        <hr class="hr60"/>
+
+        <div class="q-item-container">
+          <div class="txt-container">
+            <div>
+              <h2>Marketing Preferences</h2>
+            </div>
+            <div>
+              <p>Would you like to kept up to date with our offers and services.</p>
+            </div>
+          </div>
+
+          <div class="hori-container">
+            <div class="hori-item ">
+              <input id="yes" type="radio" class="custom-control-input" value="yes" name="marketingPref"
+                     formControlName="marketingPref">
+              <label class="custom-control-label" for="yes"> Yes </label>
+            </div>
+
+            <div class="hori-item">
+              <input id="no" type="radio" class="custom-control-input" value="no" name="marketingPref"
+                     formControlName="marketingPref">
+              <label class="custom-control-label" for="no"> No </label>
+            </div>
+          </div>
+        </div>
+
+
+        <hr class="hr60"/>
+
+        <div class="q-item-container"></div>
+        <div class="hori-container">
+          <div class="hori-item">
+            <button type="button" (click)="backBtnClick()" class=" pri-color-outline">Back</button>
+          </div>
+
+          <div class="hori-item">
+            <button type="submit" class="pri-color">Submit</button>
+            <!--            <button type="submit" class="pri-color" [disabled]="!profileForm.valid">Submit</button>-->
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <br/>
+    <br/>
+  </div>
+</div>

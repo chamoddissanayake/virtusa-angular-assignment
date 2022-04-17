@@ -1,0 +1,50 @@
+<div class="card">
+  <!--  <div class="container">-->
+
+  <div class="card-top-section">
+    <h4 class="card-title-txt">
+      <b>{{user.title + ' ' + user.firstName + ' ' + user.lastName}}</b>
+    </h4>
+  </div>
+  <div class="detail-container">
+    <div>
+      <span><b>Email: </b></span>
+      <span>{{user.email}}</span>
+    </div>
+
+    <div class="middle-item-container">
+      <span><b>Mobile: </b></span>
+      <span>{{user.mobile}} </span>
+    </div>
+
+    <div>
+      <span><b>Alternative Email: </b></span>
+      <span>{{user.altEmail}}</span>
+    </div>
+    <hr/>
+
+
+    <div class="footer-icons-container">
+
+
+      <div class="footer-icons-hori-container">
+        <div class="single-icon-container">
+          <div (click)="editClicked()" class="icon-small-container">
+            <img src="/assets/img/pencil.png" alt="Edit" width="18px" height="18px">
+          </div>
+        </div>
+        <div class="single-icon-container" >
+          <div (click)="deleteClicked()" class="icon-small-container">
+            <img src="/assets/img/delete.png" alt="Delete" width="18px" height="18px">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <!--  </div>-->
+</div>
+
+<br/>

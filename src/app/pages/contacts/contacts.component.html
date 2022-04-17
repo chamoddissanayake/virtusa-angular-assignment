@@ -1,0 +1,175 @@
+<div *ngIf="showBannerDel">
+  <app-banner [title]="bannerTitleDel" [subTitle]="bannerSubTitleDel" [status]="bannerStatusDel"></app-banner>
+</div>
+
+<div class="section-container">
+  <div class="contacts-container">
+
+
+    <br/>
+
+    <div class="lg-screen">
+      <!--      Large Start-->
+      <div class="contact-top-section-container">
+        <div class="contact-top-section-item">
+          <app-title [title]="title" [subTitle]="subTitle"></app-title>
+        </div>
+        <div class="contact-top-section-item">
+          <button mat-raised-button (click)="addBtnPressed()" class="button-color">Add new contact</button>
+        </div>
+      </div>
+      <!--      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">-->
+
+      <!--        &lt;!&ndash;- Note that these columns can be defined in any order.-->
+      <!--              The actual rendered columns are set as a property on the row definition" &ndash;&gt;-->
+      <!--        'name', 'email', 'mobile', 'altEmail','actions'-->
+
+
+      <!--        &lt;!&ndash; Name Column &ndash;&gt;-->
+      <!--        <ng-container matColumnDef="name">-->
+      <!--          <th mat-header-cell *matHeaderCellDef class="contact-table-header"><span class="th-font">Name</span></th>-->
+      <!--          <td mat-cell-->
+      <!--              *matCellDef="let element"> {{element.title + ' ' + element.firstName + ' ' + element.lastName}} </td>-->
+      <!--        </ng-container>-->
+
+      <!--        &lt;!&ndash; Email Column &ndash;&gt;-->
+      <!--        <ng-container matColumnDef="email">-->
+      <!--          <th mat-header-cell *matHeaderCellDef class="contact-table-header"><span class="th-font">Email</span></th>-->
+      <!--          <td mat-cell *matCellDef="let element"> {{element.email}} </td>-->
+      <!--        </ng-container>-->
+
+      <!--        &lt;!&ndash; Mobile Column &ndash;&gt;-->
+      <!--        <ng-container matColumnDef="mobile">-->
+      <!--          <th mat-header-cell *matHeaderCellDef class="contact-table-header"><span class="th-font">Mobile</span></th>-->
+      <!--          <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>-->
+      <!--        </ng-container>-->
+
+      <!--        &lt;!&ndash; altEmail Column &ndash;&gt;-->
+      <!--        <ng-container matColumnDef="altEmail">-->
+      <!--          <th mat-header-cell *matHeaderCellDef class="contact-table-header"><span-->
+      <!--            class="th-font">Alternative Email</span></th>-->
+      <!--          <td mat-cell *matCellDef="let element"> {{element.altEmail}} </td>-->
+      <!--        </ng-container>-->
+
+      <!--        &lt;!&ndash; actions Column &ndash;&gt;-->
+      <!--        <ng-container matColumnDef="actions">-->
+      <!--          <th mat-header-cell *matHeaderCellDef class="contact-table-header"><span class="th-font">Actions</span></th>-->
+      <!--          <td mat-cell *matCellDef="let element">-->
+      <!--            &lt;!&ndash;          <button (click)="buttonClicked(element)">Button</button>&ndash;&gt;-->
+      <!--            <div class="editDeleteContainer">-->
+      <!--              <div class="edit-delete-item-container" (click)="editButtonClicked(element)">-->
+      <!--                <img src="/assets/img/pencil.png" alt="Edit" width="18px" height="18px">-->
+      <!--              </div>-->
+      <!--              <div class="edit-delete-item-container" (click)="deleteBtnClicked(element)">-->
+      <!--                <img src="/assets/img/delete.png" alt="Edit" width="18px" height="18px">-->
+      <!--              </div>-->
+      <!--            </div>-->
+
+      <!--          </td>-->
+      <!--        </ng-container>-->
+
+      <!--        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+      <!--        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+      <!--      </table>-->
+      <div class="limiter">
+        <div class="container-table100">
+          <div class="wrap-table100">
+            <div class="table">
+
+              <div class="row header">
+                <div class="cell">
+                  Name
+                </div>
+                <div class="cell">
+                  Email
+                </div>
+                <div class="cell">
+                  Mobile
+                </div>
+                <div class="cell">
+                  Alternative Email
+                </div>
+                <div class="cell2">
+                  Actions
+                </div>
+              </div>
+
+              <div *ngFor="let item of dataSource" class="row">
+
+                <div class="cell" data-title="Full Name">
+                  {{item.title + ' ' + item.firstName + ' ' + item.lastName}}
+                </div>
+                <div class="cell" data-title="Email">
+                  {{item.email}}
+                </div>
+                <div class="cell" data-title="Mobile">
+                  {{item.mobile}}
+                </div>
+                <div class="cell" data-title="AltEmail">
+                  {{item.altEmail}}
+                </div>
+
+                <div class="cell" data-title="Actions">
+                  <div class="editDeleteContainer">
+                    <div class="editDeleteItem" (click)="deleteBtnClicked(item)">
+                      <img alt="X" src="../assets/img/delete.png" height="18px" width="18px">
+                  </div>
+                  <div class="editDeleteItem" (click)="editButtonClicked(item)" >
+                    <img alt="Edit" src="../assets/img/pencil.png" height="18px" width="18px">
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <!--      Large End-->
+</div>
+
+<div class="sm-screen">
+  <!--      Small Start-->
+  <div>
+    <div class="contact-top-section-item">
+      <app-title [title]="title" [subTitle]="subTitle"></app-title>
+    </div>
+
+    <!--      <div *ngFor="let user of ELEMENT_DATA">-->
+    <!--        <app-mobile-card-view [user]="user"-->
+    <!--                              (deleteClickEE)="editButtonClicked1($event)"-->
+    <!--                              (editClickEE)="deleteBtnClicked1($event)"-->
+    <!--        ></app-mobile-card-view>-->
+    <!--      </div>-->
+
+    <div *ngFor="let user of ELEMENT_DATA">
+      <app-mobile-card-view [user]="user"
+                            (deleteClickEE)="deleteBtnClicked1($event)"
+                            (editClickEE)="editButtonClicked1($event)"
+      ></app-mobile-card-view>
+    </div>
+
+    <div class="add-new-contact-mobile" (click)="addBtnPressed()">
+      Add New Contact
+    </div>
+    <br/>
+  </div>
+  <!--      Small End-->
+</div>
+<br/>
+
+
+<br/>
+
+
+</div>
+</div>
+

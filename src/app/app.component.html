@@ -1,0 +1,122 @@
+<div *ngIf="isLarge == true">
+  <app-header></app-header>
+</div>
+
+<div *ngIf="isLarge == false">
+  <div class="nav-container">
+    <div class="nav">
+      <input type="checkbox" id="nav-check">
+      <div class="nav-header">
+        <div class="nav-title">
+          <div class="header-menu-item-container">
+            <div class="menu-item">
+              <img src="/assets/img/logo-react.png" alt="React" width="50px" height="50px">
+            </div>
+            <div class="menu-item">
+              <div class="menu-txt">Our Products</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-txt">FAQs</div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-txt">Help</div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div  class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links">
+        <a class="link-cls" routerLink="/home">Home</a>
+        <a class="link-cls" routerLink="/devices">Devices</a>
+        <a class="link-cls" routerLink="/orders">Orders</a>
+        <a class="link-cls" routerLink="/services">Services</a>
+        <a class="link-cls" routerLink="/services">Returns</a>
+        <a class="link-cls" routerLink="/contacts">Contacts</a>
+        <a class="link-cls" routerLink="/messages">Messages</a>
+        <a class="link-cls" routerLink="/profile">Profile</a>
+        <a class="link-cls" routerLink="/email">Email</a>
+        <a class="link-cls">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLarge == true">
+  <div class="footer-full-container">
+    <div class="outer-container">
+      <div class="footer-menu-item-container">
+        <div class="menu-item">
+          <div (click)="clickHome()"><a class="selector-txt" [style.color]="randomColor('home')"
+                                        routerLink="/home">Home</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('home')" [style.height]="getHeight('home') + 'px'"
+              [style.background-color]="randomColor('home')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickDevices()"><a class="selector-txt" [style.color]="randomColor('devices')"
+                                           routerLink="/devices">Devices</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('devices')"
+              [style.height]="getHeight('devices') + 'px'" [style.background-color]="randomColor('devices')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickOrders()"><a class="selector-txt" [style.color]="randomColor('orders')" routerLink="/orders">Orders</a>
+          </div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('orders')" [style.height]="getHeight('orders') + 'px'"
+              [style.background-color]="randomColor('orders')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickServices()"><a class="selector-txt" [style.color]="randomColor('services')"
+                                            routerLink="/services">Services</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('services')"
+              [style.height]="getHeight('services') + 'px'" [style.background-color]="randomColor('services')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickReturns()"><a class="selector-txt" [style.color]="randomColor('returns')"
+                                           routerLink="/returns">Returns</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('returns')"
+              [style.height]="getHeight('returns') + 'px'" [style.background-color]="randomColor('returns')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickContacts()"><a class="selector-txt" [style.color]="randomColor('contacts')"
+                                            routerLink="/contacts">Contacts</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('contacts')"
+              [style.height]="getHeight('contacts') + 'px'" [style.background-color]="randomColor('contacts')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickMessages()"><a class="selector-txt" [style.color]="randomColor('messages')"
+                                            routerLink="/messages">Messages</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('messages')"
+              [style.height]="getHeight('messages') + 'px'" [style.background-color]="randomColor('messages')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickProfile()"><a class="selector-txt" [style.color]="randomColor('profile')"
+                                           routerLink="/profile">Profile</a></div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('profile')"
+              [style.height]="getHeight('profile') + 'px'" [style.background-color]="randomColor('profile')"/>
+        </div>
+        <div class="menu-item">
+          <div (click)="clickEmail()"><a class="selector-txt" [style.color]="randomColor('email')" routerLink="/email">Email</a>
+          </div>
+          <hr class="nav-bar-select-hr" [style.color]="randomColor('email')" [style.height]="getHeight('email') + 'px'"
+              [style.background-color]="randomColor('email')"/>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="body-container">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
